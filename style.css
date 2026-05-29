@@ -177,8 +177,8 @@ img {
 /* FLOATING WIDGETS */
 .call-float {
   position: fixed;
-  bottom: 100px;
-  right: 30px;
+  top: 90px;
+  right: 20px;
   background-color: var(--primary-color);
   color: #fff;
   border-radius: 50px;
@@ -202,8 +202,8 @@ img {
 
 .whatsapp-float {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  top: 160px;
+  right: 20px;
   background-color: #25d366;
   color: #fff;
   border-radius: 50px;
