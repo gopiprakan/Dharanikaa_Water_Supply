@@ -175,16 +175,14 @@ img {
 }
 
 /* FLOATING WIDGETS */
-.call-float {
+.call-float,
+.whatsapp-float {
   position: fixed;
-  top: 90px;
   right: 20px;
-  background-color: var(--primary-color);
   color: #fff;
   border-radius: 50px;
   text-align: center;
   font-size: 30px;
-  box-shadow: 2px 2px 15px rgba(0, 119, 182, 0.3);
   z-index: 100;
   display: flex;
   align-items: center;
@@ -192,6 +190,12 @@ img {
   width: 60px;
   height: 60px;
   transition: var(--transition);
+}
+
+.call-float {
+  top: 90px;
+  background-color: var(--primary-color);
+  box-shadow: 2px 2px 15px rgba(0, 119, 182, 0.3);
 }
 
 .call-float:hover {
@@ -201,27 +205,51 @@ img {
 }
 
 .whatsapp-float {
-  position: fixed;
   top: 160px;
-  right: 20px;
   background-color: #25d366;
-  color: #fff;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 30px;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  transition: var(--transition);
 }
 
 .whatsapp-float:hover {
   background-color: #128c7e;
   transform: scale(1.1) rotate(5deg);
+}
+
+/* Blinking arrow indicators */
+.call-float::before,
+.whatsapp-float::before {
+  content: '»';
+  position: absolute;
+  right: 68px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  animation: blink-arrow 1.2s ease-in-out infinite;
+  pointer-events: none;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.call-float::before {
+  color: var(--primary-color);
+}
+
+.whatsapp-float::before {
+  color: #25d366;
+}
+
+@keyframes blink-arrow {
+  0% {
+    opacity: 0.2;
+    transform: translateX(6px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateX(6px);
+  }
 }
 
 /* ANIMATIONS */
