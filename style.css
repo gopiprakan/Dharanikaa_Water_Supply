@@ -174,7 +174,32 @@ img {
   transform: translateY(-2px);
 }
 
-/* FLOATING WIDGET */
+/* FLOATING WIDGETS */
+.call-float {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 15px rgba(0, 119, 182, 0.3);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  transition: var(--transition);
+}
+
+.call-float:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 2px 2px 20px rgba(3, 4, 94, 0.4);
+}
+
 .whatsapp-float {
   position: fixed;
   bottom: 30px;
