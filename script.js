@@ -173,7 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxNext = document.getElementById('lightbox-next');
   
   let currentActiveIndex = 0;
-  const visibleGalleryItems = () => Array.from(galleryItems).filter(item => item.style.display !== 'none');
+  const visibleGalleryItems = () => Array.from(galleryItems).filter(item => {
+    const displayStyle = item.style.display;
+    return displayStyle === '' || displayStyle === 'block';
+  });
 
   const openLightbox = (index) => {
     const items = visibleGalleryItems();
@@ -236,6 +239,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ArrowLeft') lightboxPrev.click();
     if (e.key === 'ArrowRight') lightboxNext.click();
   });
+
+  // Touch/swipe support for mobile lightbox
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        lightboxNext.click(); // Swipe left = next
+      } else {
+        lightboxPrev.click(); // Swipe right = prev
+      }
+    }
+  }, { passive: true });
 
 
   // ==========================================

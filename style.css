@@ -573,7 +573,7 @@ img {
 }
 
 .wave-3 {
-  fill: var(--bg-gradient);
+  fill: var(--light-color);
   animation-duration: 20s;
 }
 
@@ -918,16 +918,17 @@ img {
   height: 100%;
   background: rgba(10, 17, 40, 0.95);
   z-index: 2000;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .lightbox.active {
-  display: flex;
   opacity: 1;
+  visibility: visible;
 }
 
 .lightbox-content {
@@ -955,15 +956,16 @@ img {
 }
 
 .lightbox-close {
-  position: absolute;
-  top: -40px;
-  right: 0;
+  position: fixed;
+  top: 20px;
+  right: 30px;
   background: none;
   border: none;
   color: var(--white);
   font-size: 35px;
   cursor: pointer;
   transition: var(--transition);
+  z-index: 2001;
 }
 
 .lightbox-close:hover {
@@ -972,7 +974,7 @@ img {
 }
 
 .lightbox-nav {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.15);
@@ -987,6 +989,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2001;
 }
 
 .lightbox-nav:hover {
@@ -994,11 +997,11 @@ img {
 }
 
 .lightbox-prev {
-  left: -80px;
+  left: 20px;
 }
 
 .lightbox-next {
-  right: -80px;
+  right: 20px;
 }
 
 /* REVIEWS SECTION */
@@ -1105,8 +1108,11 @@ img {
   transition: var(--transition);
 }
 
-.star-option.selected, .star-option:hover, .star-option:hover ~ .star-option {
+.star-option.selected,
+.star-option:hover,
+.star-option:hover ~ .star-option {
   color: #ffb703;
+  text-shadow: 0 0 8px rgba(255, 183, 3, 0.4);
 }
 
 /* CONTACT & ORDER SECTION */
@@ -1365,12 +1371,6 @@ textarea.form-control {
   .hero-content h1 {
     font-size: 3rem;
   }
-  .lightbox-prev {
-    left: -40px;
-  }
-  .lightbox-next {
-    right: -40px;
-  }
 }
 
 @media (max-width: 968px) {
@@ -1493,7 +1493,9 @@ textarea.form-control {
   }
   
   .lightbox-prev, .lightbox-next {
-    display: none !important;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
   }
 }
 
